@@ -100,7 +100,7 @@ make.jagsboralmodel <- function(family, num.X = 0, X.ind = NULL, num.traits = 0,
   model_script <- c(model_script, paste0("\t ## Latent variables ##"))    
   if(lv.control$type == "independent"){
     model_script <- c(model_script, paste0("\t for(i in 1:n) { for(k in 1:num.lv) { lvs[i,k] ~ dnorm(0,1) } } \n\n\t ## Process level and priors ##"))
-    model_script <- c(model_script, paste0("\t for(i in 1:n) { for(k in 1:num.lv) { lvsStar[i,k] ~ dnorm(0,1) } } \n\n\t ## Process level and priors ##"))
+    model_script <- c(model_script, paste0("\t for(i in 1:n) { for(k in 1:num.lv) { lvsStar[i,k] ~ dnorm(0,1) } } \n\n\t ## resample random effects ##"))
   }
   
   if(lv.control$type == "exponential")
