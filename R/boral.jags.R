@@ -251,7 +251,7 @@ boral.default <- function(y, X = NULL, X.ind = NULL, traits = NULL, which.traits
   ###############
   ## FORM PARAMETERS
   ###############
-  jags_params <- c("lv.coefs")
+  jags_params <- c("lv.coefs", "yStar","y")
   if(num.lv > 0) 
     jags_params <- c(jags_params, "lvs")
   if(lv.control$type != "independent") 
