@@ -251,7 +251,7 @@ boral.default <- function(y, X = NULL, X.ind = NULL, traits = NULL, which.traits
   ###############
   ## FORM PARAMETERS
   ###############
-  jags_params <- c("lv.coefs", "yStar","y")
+  jags_params <- c("lv.coefs", "yStar","y","Z","ZStar")
   if(num.lv > 0) 
     jags_params <- c(jags_params, "lvs")
   if(lv.control$type != "independent") 
@@ -343,6 +343,12 @@ boral.default <- function(y, X = NULL, X.ind = NULL, traits = NULL, which.traits
   
   yP=combined_fit_mcmc[,yIdx]
   yStarP=combined_fit_mcmc[,yStarIdx]
+  
+  ZIdx=grep("Z\\[",mcmc_names)
+  ZStarIdx=grep("ZStar",mcmc_names)
+  
+  ZP=combined_fit_mcmc[,ZIdx]
+  ZStarP=combined_fit_mcmc[,ZStarIdx]
   
   rm(fit.mcmc, fit.mcmcBase)
   
@@ -714,6 +720,8 @@ boral.default <- function(y, X = NULL, X.ind = NULL, traits = NULL, which.traits
   }
   out.fit$yP=yP
   out.fit$yStarP=yStarP
+  out.fit$ZP=ZP
+  out.fit$ZStarP=ZStarP
   return(out.fit) 
   }
 
