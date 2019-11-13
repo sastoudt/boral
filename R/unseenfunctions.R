@@ -313,7 +313,7 @@ setup.resp.families.lv <- function(p, complete.family, num.lv, row.eff, row.ids,
           if(row.eff != "none") {
             for(k in 1:ncol(row.ids)){ 
               linpred_string <- paste(linpred_string, " + row.coefs.ID", k,"[row.ids[i,",k,"]]", sep ="")
-              linpred_string2 <- paste(linpred_string2, " + row.coefs.ID", k,"[row.ids[i,",k,"]]", sep ="")
+              linpred_string2 <- paste(linpred_string2, " + row.coefs.IDStar", k,"[row.ids[i,",k,"]]", sep ="") ## this needs to change to star
             }
             
           }
@@ -345,7 +345,7 @@ setup.resp.families.lv <- function(p, complete.family, num.lv, row.eff, row.ids,
         if(row.eff != "none") {
           for(k in 1:ncol(row.ids)){
             linpred_string <- paste(linpred_string, " + row.coefs.ID", k,"[row.ids[i,",k,"]]", sep ="")
-            linpred_string2 <- paste(linpred_string2, " + row.coefs.ID", k,"[row.ids[i,",k,"]]", sep ="")
+            linpred_string2 <- paste(linpred_string2, " + row.coefs.IDStar", k,"[row.ids[i,",k,"]]", sep ="") ## this needs to change to star
             
           } 
         }

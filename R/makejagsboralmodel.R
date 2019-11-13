@@ -193,7 +193,9 @@ make.jagsboralmodel <- function(family, num.X = 0, X.ind = NULL, num.traits = 0,
   }
   if(row.eff == "random") {
     for(k in 1:ncol(row.ids)) {
-      model_script <- c(model_script, paste0("\n\t for(i in 1:n.ID[", k, "]) { row.coefs.ID", k, "[i] ~ dnorm(0, pow(row.sigma.ID", k, ",-2)) } "))
+      model_script <- c(model_script, paste0("\n\t for(i in 1:n.ID[", k, "]) { row.coefs.ID", k, "[i] ~ dnorm(0, pow(row.sigma.ID", k, ",-2)) } ")) ## this needs a star version
+      model_script <- c(model_script, paste0("\n\t for(i in 1:n.ID[", k, "]) { row.coefs.IDStar", k, "[i] ~ dnorm(0, pow(row.sigma.ID", k, ",-2)) } ")) 
+
       model_script <- c(model_script, paste0("\t row.sigma.ID", k, " ~ ", prior.strings$p4))
     }
   }
