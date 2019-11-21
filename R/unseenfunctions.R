@@ -399,11 +399,15 @@ setup.resp.families.lv <- function(p, complete.family, num.lv, row.eff, row.ids,
       if(length(unique(complete.family)) == 1) {
         if(j == 1) {
           respfamily_script <- c(respfamily_script, paste("\t\t for(j in 1:p) { y[i,j] ~ dnorm(lv.coefs[j,1] + eta[i,j],pow(lv.coefs[j,num.lv+2],-2)) } \n", sep = ""))
+          respfamily_script <- c(respfamily_script, paste("\t\t for(j in 1:p) { yStar[i,j] ~ dnorm(lv.coefs[j,1] + etaStar[i,j],pow(lv.coefs[j,num.lv+2],-2)) } \n", sep = ""))
+
         }
         if(j > 1) { }
       }
       if(length(unique(complete.family)) > 1) {		
         respfamily_script <- c(respfamily_script, paste("\t\t y[i,", j, "] ~ dnorm(lv.coefs[", j, ",1] + eta[i,", j, "],pow(lv.coefs[", j, ",num.lv+2],-2)) \n", sep = ""))
+        respfamily_script <- c(respfamily_script, paste("\t\t yStar[i,", j, "] ~ dnorm(lv.coefs[", j, ",1] + etaStar[i,", j, "],pow(lv.coefs[", j, ",num.lv+2],-2)) \n", sep = ""))
+
       }
     }
     
